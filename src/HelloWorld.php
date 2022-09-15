@@ -6,11 +6,8 @@ namespace App;
 
 class HelloWorld
 {
-    /**
-     * @return void
-     */
-    public function hello(): void
+    public function hello(): string
     {
-        echo 'Hello world!';
+        return 'Hello world!';
     }
 }
