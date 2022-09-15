@@ -6,6 +6,9 @@ namespace App;
 
 class HelloWorld
 {
+    /**
+     * @return string
+     */
     public function hello(): string
     {
         return 'Hello world!';
