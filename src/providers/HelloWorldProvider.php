@@ -7,18 +7,17 @@ namespace App\Providers;
 use App\HelloWorld;
 use DI\ContainerBuilder;
 
-class HelloWorldServiceProvider
+class HelloWorldProvider
 {
     /**
-     * @param ContainerBuilder $builder
+     * @param  ContainerBuilder  $builder
      * @return ContainerBuilder
      */
     public function __invoke(ContainerBuilder $builder): ContainerBuilder
     {
+
         return $builder->addDefinitions([
-            'HelloWorld' => function () {
-                return new HelloWorld('Kate');
-            }
+            HelloWorld::class => fn () => new HelloWorld('Kate')
         ]);
     }
 }

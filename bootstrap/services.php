@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use \App\Providers\HelloWorldServiceProvider;
+use App\Providers\HelloWorldProvider;
 
 return [
-    HelloWorldServiceProvider::class,
+    HelloWorldProvider::class,
 ];

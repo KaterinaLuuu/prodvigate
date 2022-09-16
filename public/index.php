@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
+use App\HelloWorld;
+
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-$app = require __DIR__ . '/../bootstrap/container.php';
+$container = require __DIR__ . '/../bootstrap/container.php';
 
-echo $app->get(HelloWorld::class)->hello();
+echo $container->get(HelloWorld::class)->hello();

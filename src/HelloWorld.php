@@ -6,10 +6,13 @@ namespace App;
 
 class HelloWorld
 {
+    /**
+     * @var string
+     */
     public string $name;
 
     /**
-     * @param string $name
+     * @param  string  $name
      */
     public function __construct(string $name)
     {
