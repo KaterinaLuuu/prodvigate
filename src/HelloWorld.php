@@ -6,9 +6,7 @@ namespace App;
 
 class HelloWorld
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     public string $name;
 
     /**

@@ -9,14 +9,9 @@ use DI\ContainerBuilder;
 
 class HelloWorldProvider
 {
-    /**
-     * @param  ContainerBuilder  $builder
-     * @return ContainerBuilder
-     */
-    public function __invoke(ContainerBuilder $builder): ContainerBuilder
+    public function __invoke(ContainerBuilder $builder): void
     {
-
-        return $builder->addDefinitions([
+        $builder->addDefinitions([
             HelloWorld::class => fn () => new HelloWorld('Kate')
         ]);
     }
