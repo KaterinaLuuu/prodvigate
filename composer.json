@@ -15,5 +15,8 @@
       "phpcs --standard=PSR12 src/",
       "vendor/bin/phpstan analyse -c phpstan.neon src/ --level 8"
     ]
+  },
+  "require": {
+    "php-di/php-di": "^6.4"
   }
 }
