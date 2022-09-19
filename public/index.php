@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-use App\HelloWorld;
+use App\Services\Http\Kernel;
+use Symfony\Component\HttpFoundation\Request;
 
 $container = require __DIR__ . '/../bootstrap/container.php';
 
-echo $container->get(HelloWorld::class)->hello();
+$requestHandler = (new Kernel())->process(Request::createFromGlobals());
+$requestHandler->send();
