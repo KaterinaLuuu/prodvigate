@@ -4,23 +4,26 @@ declare(strict_types=1);
 
 namespace App\Services\Http;
 
-use App\Services\Middleware\PassMiddleware;
-use App\Services\Middleware\Stack;
+use App\Http\Middleware\Stack;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class Kernel implements KernelInterface
 {
+    private array $middlewares = [];
+
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param  array  $middlewares
      */
+    public function __construct(array $middlewares)
+    {
+        $this->middlewares = $middlewares;
+    }
+
     public function process(Request $request): Response
     {
-        $stack = new Stack();
-        $pass = new PassMiddleware();
+        $stack = new Stack($this->middlewares);
 
-        return $pass->process($request, $stack);
+        return $stack->next($request, $stack)->process($request, $stack);
     }
 }
