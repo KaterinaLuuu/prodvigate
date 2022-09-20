@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Http;
+namespace App\Service\Http;
 
-use App\Services\Http\Middleware\Stack;
+use App\Service\Http\Middleware\Stack;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class Kernel implements KernelInterface
 {
-    /** @var array*/
+    /** @var string[] */
     private array $middlewares;
 
     /**

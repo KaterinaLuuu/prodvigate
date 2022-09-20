@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Http\Middleware;
+namespace App\Service\Http\Middleware;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class Stack implements StackInterface, MiddlewareInterface
 {
-    /** @var array */
+    /** @var string[] */
     private array $middlewares;
 
     /**
