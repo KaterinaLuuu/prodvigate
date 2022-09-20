@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Middleware;
+namespace App\Services\Http\Middleware;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 interface MiddlewareInterface
 {
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request  $request
-     * @param  \App\Http\Middleware\StackInterface        $stack
+     * @param  \Symfony\Component\HttpFoundation\Request     $request
+     * @param  \App\Services\Http\Middleware\StackInterface  $stack
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

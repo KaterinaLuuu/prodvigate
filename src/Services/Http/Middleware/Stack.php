@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Middleware;
+namespace App\Services\Http\Middleware;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class Stack implements StackInterface, MiddlewareInterface
 {
-    private array $middlewares = [];
+    /** @var array */
+    private array $middlewares;
 
     /**
-     * @param  array  $middlewares
+     * @param  string[]  $middlewares
      */
     public function __construct(array $middlewares)
     {
@@ -24,10 +25,10 @@ class Stack implements StackInterface, MiddlewareInterface
         return new Response('Not Found Middlewares', 404);
     }
 
-    public function next($request, $stack): MiddlewareInterface|Response
+    public function next(): MiddlewareInterface|Response
     {
         if (0 === count($this->middlewares)) {
-            return $this->process($request, $stack);
+            return $this;
         }
 
         $middleware = array_shift($this->middlewares);

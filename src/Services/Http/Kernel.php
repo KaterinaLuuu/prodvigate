@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace App\Services\Http;
 
-use App\Http\Middleware\Stack;
+use App\Services\Http\Middleware\Stack;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class Kernel implements KernelInterface
 {
-    private array $middlewares = [];
+    /** @var array*/
+    private array $middlewares;
 
     /**
-     * @param  array  $middlewares
+     * @param  string[]  $middlewares
      */
     public function __construct(array $middlewares)
     {
@@ -24,6 +25,6 @@ class Kernel implements KernelInterface
     {
         $stack = new Stack($this->middlewares);
 
-        return $stack->next($request, $stack)->process($request, $stack);
+        return $stack->next()->process($request, $stack);
     }
 }
