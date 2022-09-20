@@ -12,6 +12,8 @@ class Stack implements StackInterface, MiddlewareInterface
 {
     /** @var string[] */
     private array $middlewares;
+
+    /** @var \Psr\Container\ContainerInterface */
     private ContainerInterface $container;
 
     /**
@@ -36,7 +38,7 @@ class Stack implements StackInterface, MiddlewareInterface
         }
 
         $middleware = array_shift($this->middlewares);
+
         return $this->container->get($middleware);
-//        return new $middleware;
     }
 }

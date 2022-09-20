@@ -13,6 +13,8 @@ class Kernel implements KernelInterface
 {
     /** @var string[] */
     private array $middlewares;
+
+    /** @var \Psr\Container\ContainerInterface */
     private ContainerInterface $container;
 
     /**

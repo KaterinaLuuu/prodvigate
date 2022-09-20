@@ -12,11 +12,15 @@ use Twig\Environment;
 
 final class HelloMiddleware implements MiddlewareInterface
 {
+    /** @var \Twig\Environment */
+    private Environment $environment;
+
     /**
      * @param  \Twig\Environment  $environment
      */
-    public function __construct(private Environment $environment)
+    public function __construct(Environment $environment)
     {
+        $this->environment = $environment;
     }
 
     public function process(Request $request, StackInterface $stack): Response
