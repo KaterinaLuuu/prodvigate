@@ -12,6 +12,6 @@ $middleware = [
     HelloMiddleware::class,
 ];
 
-$response = (new Kernel($middleware))->process(Request::createFromGlobals());
+$response = (new Kernel($middleware, $container))->process(Request::createFromGlobals());
 
 $response->send();

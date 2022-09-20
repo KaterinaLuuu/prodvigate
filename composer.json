@@ -18,6 +18,7 @@
   },
   "require": {
     "php-di/php-di": "^6.4",
-    "symfony/http-foundation": "^6.0"
+    "symfony/http-foundation": "^6.0",
+    "twig/twig": "^3.0"
   }
 }
