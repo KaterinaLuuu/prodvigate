@@ -12,7 +12,7 @@ class HelloWorldProvider
     public function __invoke(ContainerBuilder $builder): void
     {
         $builder->addDefinitions([
-            HelloWorld::class => fn () => new HelloWorld('Kate')
+            HelloWorld::class => fn() => new HelloWorld('Kate'),
         ]);
     }
 }
