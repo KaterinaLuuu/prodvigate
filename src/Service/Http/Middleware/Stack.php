@@ -25,7 +25,7 @@ class Stack implements StackInterface, MiddlewareInterface
         return new Response('Not Found Middlewares', 404);
     }
 
-    public function next(): MiddlewareInterface|Response
+    public function next(): MiddlewareInterface
     {
         if (0 === count($this->middlewares)) {
             return $this;
