@@ -24,7 +24,7 @@ class Kernel implements KernelInterface
     public function __construct(array $middlewares, ContainerInterface $container)
     {
         $this->middlewares = $middlewares;
-        $this->container = $container;
+        $this->container   = $container;
     }
 
     public function process(Request $request): Response
