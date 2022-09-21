@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 interface MiddlewareInterface
 {
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request     $request
-     * @param  \App\Services\Http\Middleware\StackInterface  $stack
+     * @param  \Symfony\Component\HttpFoundation\Request    $request
+     * @param  \App\Service\Http\Middleware\StackInterface  $stack
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */

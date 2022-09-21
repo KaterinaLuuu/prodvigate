@@ -11,7 +11,19 @@ $container = require __DIR__ . '/../bootstrap/container.php';
 $middleware = [
     HelloMiddleware::class,
 ];
+$request = Request::createFromGlobals();
+$met = $request->getMethod();
+$pa = $request->getQueryString();
+echo '<pre>';
+print_r($request);
+echo '</pre>';
+//echo '<pre>';
+//print_r($met);
+//echo '</pre>';
+echo '<pre>';
+print_r($pa);
+echo '</pre>';
 
-$response = (new Kernel($middleware))->process(Request::createFromGlobals());
+$response = (new Kernel($middleware, $container))->process(Request::createFromGlobals());
 
 $response->send();
