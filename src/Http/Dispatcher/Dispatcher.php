@@ -1,24 +1,20 @@
 <?php
 
-namespace App\Service\Http\Middleware;
+namespace App\Http\Dispatcher;
 
 use App\Http\Controller\Index\IndexAction;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Dispatcher implements MiddlewareInterface
+class Dispatcher implements DispatcherInterface
 {
-    /**
-     * @var array|array[]
-     */
+    /** @var array|array[] */
     private array $routes = [
         ['url' => '/', 'controller' => IndexAction::class],
     ];
 
-    /**
-     * @var \Psr\Container\ContainerInterface
-     */
+    /** @var \Psr\Container\ContainerInterface */
     private ContainerInterface $container;
 
     public function __construct(ContainerInterface $container)
@@ -26,11 +22,10 @@ class Dispatcher implements MiddlewareInterface
         $this->container = $container;
     }
 
-    public function process(Request $request, StackInterface $stack): Response
+    public function dispatch(string $url, Request $request): Response
     {
-        $requestUrl = $request->getRequestUri();
         foreach ($this->routes as $route) {
-            if ($requestUrl == $route['url']) {
+            if ($url == $route['url']) {
                 $container          = $this->container->get($route['controller']);
                 $responseController = $container($request);
 
