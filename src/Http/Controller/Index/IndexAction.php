@@ -21,14 +21,14 @@ class IndexAction
     }
 
     /**
-     * @param  \Symfony\Component\HttpFoundation\Request  $requers
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
      *
      * @return string
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function __invoke(Request $requers)
+    public function __invoke(Request $request)
     {
         return $this->environment->render('index.html.twig');
     }
