@@ -2,7 +2,7 @@
 
 namespace App\Service\Http\Middleware;
 
-use Psr\Container\ContainerInterface;
+use App\Http\Controller\Index\IndexAction;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Dispatcher\Dispatcher;
@@ -10,19 +10,17 @@ use App\Http\Dispatcher\Dispatcher;
 class RouteMiddleware implements MiddlewareInterface
 {
     /**
-     * @param  \Psr\Container\ContainerInterface  $container
+     * @param  \App\Http\Dispatcher\Dispatcher  $dispatcher
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(Dispatcher $dispatcher)
     {
-        $this->container = $container;
+        $this->dispatcher = $dispatcher;
     }
 
     public function process(Request $request, StackInterface $stack): Response
     {
-        $requestUrl = $request->getRequestUri();
-        $dispatcher = $this->container->get(Dispatcher::class);
-        $page       = $dispatcher->dispatch($requestUrl, $request)->getContent();
+        $page = $this->dispatcher->dispatch($request, IndexAction::class, '__invoke');
 
-        return new Response($page);
+        return $page;
     }
 }
