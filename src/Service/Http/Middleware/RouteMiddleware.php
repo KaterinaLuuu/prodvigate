@@ -3,12 +3,15 @@
 namespace App\Service\Http\Middleware;
 
 use App\Http\Controller\Index\IndexAction;
+use App\Http\Dispatcher\Dispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Http\Dispatcher\Dispatcher;
 
 class RouteMiddleware implements MiddlewareInterface
 {
+    /** @var \App\Http\Dispatcher\Dispatcher */
+    private Dispatcher $dispatcher;
+
     /**
      * @param  \App\Http\Dispatcher\Dispatcher  $dispatcher
      */
@@ -19,8 +22,6 @@ class RouteMiddleware implements MiddlewareInterface
 
     public function process(Request $request, StackInterface $stack): Response
     {
-        $page = $this->dispatcher->dispatch($request, IndexAction::class, '__invoke');
-
-        return $page;
+        return $this->dispatcher->dispatch($request, IndexAction::class, '__invoke');
     }
 }

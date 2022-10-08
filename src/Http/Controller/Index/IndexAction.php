@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controller\Index;
 
 use Twig\Environment;
-use Twig\Error\Error;
 
 final class IndexAction
 {
@@ -22,9 +21,9 @@ final class IndexAction
 
     /**
      * @return string
-     * @throws Error
+     * @throws \Twig\Error\Error
      */
-    public function __invoke()
+    public function __invoke(): string
     {
         return $this->environment->render('index.html.twig');
     }
