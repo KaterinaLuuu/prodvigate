@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Providers\HelloWorldProvider;
+use App\Providers\DispatcherProvider;
 use App\Providers\TwigProvider;
 
 return [
-    HelloWorldProvider::class,
     TwigProvider::class,
+    DispatcherProvider::class,
 ];
